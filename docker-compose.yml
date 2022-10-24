@@ -1,0 +1,19 @@
+version: '2'
+services:
+  solr:
+    image: vivoweb/vivo-solr:latest
+    ports:
+      - 8983:8983
+    networks:
+      - vivo
+  vivo:
+    image: vivoweb/vivo:latest
+    ports:
+      - 8080:8080
+    links:
+      - solr
+    networks:
+      - vivo
+
+networks:
+  vivo:
